@@ -3,34 +3,34 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package VIEW;
+package view;
 
-import Entidades.TbCategoria;
-import Sessao.TbCategoriaFacade;
+import entidades.TbCategoria;
 import javax.ejb.EJB;
 import javax.inject.Named;
+import javax.enterprise.context.Dependent;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
+import sessao.TbCategoriaFacade;
 
 /**
  *
- * @author Otávio
+ * @author Maxuel
  */
 @Named(value = "categoriaManagedBean")
 @ManagedBean
 @RequestScoped
 public class CategoriaManagedBean {
-    
+
     @EJB
+    private TbCategoriaFacade tbCategoriaFacade;
     private TbCategoria categoria;
-    
-    private TbCategoriaFacade categoriaFacade;
 
     public TbCategoria getCategoria() {
-        if(categoria == null){
-        categoria = new TbCategoria();
+        if(categoria==null){
+            categoria = new TbCategoria();
         }
         return categoria;
     }
@@ -38,50 +38,42 @@ public class CategoriaManagedBean {
     public void setCategoria(TbCategoria categoria) {
         this.categoria = categoria;
     }
-
-   
-    public String inserir(){
-    this.categoriaFacade.create(categoria);
     
-    FacesContext context = FacesContext.getCurrentInstance();
+    public String salvar(){
+        this.tbCategoriaFacade.create(categoria);
+        FacesContext context = FacesContext.getCurrentInstance();
     
-    context.addMessage(null, new FacesMessage("Salvo com sucesso!!!", "Mensagem"));
+        context.addMessage(null, new FacesMessage("Salvo com Sucesso", "Mensagem"));
+        return null;
+    }
+    public String excluir(){
+        this.tbCategoriaFacade.remove(categoria);
+        FacesContext context = FacesContext.getCurrentInstance();
     
-    return null;
+        context.addMessage(null, new FacesMessage("Excluido com Sucesso", "Mensagem"));
+        return null;
+    }
+    public String atualiazar(){
+        this.tbCategoriaFacade.edit(categoria);
+        FacesContext context = FacesContext.getCurrentInstance();
+    
+        context.addMessage(null, new FacesMessage("Atualizado com Sucesso", "Mensagem"));
+        return null;
     }
     
-    public String alterar(){
-    this.categoriaFacade.edit(categoria);
-    
-    FacesContext context = FacesContext.getCurrentInstance();
-    
-    context.addMessage(null, new FacesMessage("Alterado com sucesso!!!", "Mensagem"));
-    
-    return null;
+    public String montarPaginaInserir(){
+        return "/Categoria/InserirCategoria";
     }
-    
-    public String exclui(){
-    this.categoriaFacade.remove(categoria);
-    
-    FacesContext context = FacesContext.getCurrentInstance();
-    
-    context.addMessage(null, new FacesMessage("removido com sucesso!!!", "Mensagem"));
-    
-    return null;
+    public String montarPaginaExcluir(){
+        return "/Categoria/ExcluirCategoria";
     }
-    
-    public TbCategoria buscaId(int id){
-    this.categoriaFacade.find(id);
-    
-    return categoria;
+    public String montarPaginaAtualizar(){
+        return "/Categoria/AtualizarCategoria";
     }
-    
-    public TbCategoria buscaCategoria(String categ){
-    this.categoriaFacade.buscaCategoria(categ);
-    
-    return categoria;
+    public String montarPaginaListar(){
+        //Ainda precisa ser feita
+        return null;
     }
-    
     public CategoriaManagedBean() {
     }
     

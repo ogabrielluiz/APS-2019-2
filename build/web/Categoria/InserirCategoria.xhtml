@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <f:view>
+
+
+            <h:form>
+                <h1><h:outputText value="Inserir"/></h1>
+                <p:panelGrid columns="2">
+                    <p:outputLabel value="IdDvd:" for="idDvd" />
+                    <p:inputText id="idDvd" value="#{categoriaManagedBean.categoria.idDvd}" title="IdDvd" required="true" requiredMessage="The IdDvd field is required."/>
+                    <p:outputLabel value="GeneroCategoria:" for="generoCategoria" />
+                    <p:inputText id="generoCategoria" value="#{categoriaManagedBean.categoria.generoCategoria}" title="GeneroCategoria" />
+                    <p:outputLabel value="TbDvd:" for="tbDvd" />
+                    <p:selectOneMenu id="tbDvd" value="#{categoriaManagedBean.categoria.tbDvd}" required="true" requiredMessage="The TbDvd field is required.">
+                        <!-- TODO: update below reference to list of available items-->
+                        <f:selectItems value="#{fixme}"/>
+                    </p:selectOneMenu>
+                </p:panelGrid>
+            </h:form>
+        </f:view>
+
+    </h:body>
+</html>
+

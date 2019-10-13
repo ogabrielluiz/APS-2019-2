@@ -3,21 +3,21 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Sessao;
+package sessao;
 
-import Entidades.TbCategoria;
+import entidades.TbCategoria;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 /**
  *
- * @author Otávio
+ * @author Maxuel
  */
 @Stateless
 public class TbCategoriaFacade extends AbstractFacade<TbCategoria> {
 
-    @PersistenceContext(unitName = "APSLocadoraJSFPU")
+    @PersistenceContext(unitName = "TestandoApsPU")
     private EntityManager em;
 
     @Override
@@ -29,7 +29,4 @@ public class TbCategoriaFacade extends AbstractFacade<TbCategoria> {
         super(TbCategoria.class);
     }
     
-    public TbCategoria buscaCategoria(String categoria){
-    return getEntityManager().find(TbCategoria.class, categoria);
-    }
 }

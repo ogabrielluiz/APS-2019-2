@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Entidades;
+package entidades;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -21,7 +21,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author Otávio
+ * @author Maxuel
  */
 @Entity
 @Table(name = "tb_aluga")
@@ -134,7 +134,7 @@ public class TbAluga implements Serializable {
 
     @Override
     public String toString() {
-        return "Entidades.TbAluga[ tbAlugaPK=" + tbAlugaPK + " ]";
+        return "entidades.TbAluga[ tbAlugaPK=" + tbAlugaPK + " ]";
     }
     
 }

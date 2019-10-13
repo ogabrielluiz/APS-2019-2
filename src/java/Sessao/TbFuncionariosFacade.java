@@ -3,21 +3,21 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Sessao;
+package sessao;
 
-import Entidades.TbFuncionarios;
+import entidades.TbFuncionarios;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 /**
  *
- * @author Otávio
+ * @author Maxuel
  */
 @Stateless
 public class TbFuncionariosFacade extends AbstractFacade<TbFuncionarios> {
 
-    @PersistenceContext(unitName = "APSLocadoraJSFPU")
+    @PersistenceContext(unitName = "TestandoApsPU")
     private EntityManager em;
 
     @Override
@@ -27,14 +27,6 @@ public class TbFuncionariosFacade extends AbstractFacade<TbFuncionarios> {
 
     public TbFuncionariosFacade() {
         super(TbFuncionarios.class);
-    }
-    
-    public TbFuncionarios buscafuncnome(String nome){
-    return getEntityManager().find(TbFuncionarios.class, nome);
-    }
-    
-    public TbFuncionarios buscafuncdpf(String cpf){
-    return getEntityManager().find(TbFuncionarios.class, cpf);
     }
     
 }

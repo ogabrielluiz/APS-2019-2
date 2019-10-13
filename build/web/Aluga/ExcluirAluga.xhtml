@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <f:view>
+
+
+            <h:form>
+                <h1><h:outputText value="Excluir"/></h1>
+                <p:panelGrid columns="2">
+                    <p:outputLabel value="DtAluga:" for="dtAluga" />
+                    <p:inputText id="dtAluga" value="#{alugaManagedBean.aluga.dtAluga}" title="DtAluga" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </p:inputText>
+                    <p:outputLabel value="DtParaentrega:" for="dtParaentrega" />
+                    <p:inputText id="dtParaentrega" value="#{alugaManagedBean.aluga.dtParaentrega}" title="DtParaentrega" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </p:inputText>
+                    <p:outputLabel value="Entregue:" for="entregue" />
+                    <p:inputText id="entregue" value="#{alugaManagedBean.aluga.entregue}" title="Entregue" />
+                    <p:outputLabel value="TbCliente:" for="tbCliente" />
+                    <p:selectOneMenu id="tbCliente" value="#{alugaManagedBean.aluga.tbCliente}" required="true" requiredMessage="The TbCliente field is required.">
+                        <!-- TODO: update below reference to list of available items-->
+                        <f:selectItems value="#{fixme}"/>
+                    </p:selectOneMenu>
+                    <p:outputLabel value="TbDvd:" for="tbDvd" />
+                    <p:selectOneMenu id="tbDvd" value="#{alugaManagedBean.aluga.tbDvd}" required="true" requiredMessage="The TbDvd field is required.">
+                        <!-- TODO: update below reference to list of available items-->
+                        <f:selectItems value="#{fixme}"/>
+                    </p:selectOneMenu>
+                </p:panelGrid>
+            </h:form>
+        </f:view>
+
+    </h:body>
+</html>
+
