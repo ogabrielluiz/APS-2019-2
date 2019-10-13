@@ -3,20 +3,21 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package VIEW;
+package view;
 
-import Entidades.TbDvd;
-import Sessao.TbDvdFacade;
+import entidades.TbDvd;
 import javax.ejb.EJB;
 import javax.inject.Named;
+import javax.enterprise.context.Dependent;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
+import sessao.TbDvdFacade;
 
 /**
  *
- * @author Otávio
+ * @author Maxuel
  */
 @Named(value = "dvdManagedBean")
 @ManagedBean
@@ -24,13 +25,13 @@ import javax.faces.context.FacesContext;
 public class DvdManagedBean {
 
     @EJB
+    private TbDvdFacade tbDvdFacade;
     private TbDvd dvd;
-    private TbDvdFacade dvdFacade;
 
     public TbDvd getDvd() {
-        
-        if(dvd == null){
-        dvd = new TbDvd();
+        if(dvd==null)
+        {
+            dvd = new TbDvd();
         }
         return dvd;
     }
@@ -39,58 +40,43 @@ public class DvdManagedBean {
         this.dvd = dvd;
     }
     
-    public String inserir(){
-    this.dvdFacade.create(dvd);
+    public String salvar(){
+        this.tbDvdFacade.create(dvd);
+        FacesContext context = FacesContext.getCurrentInstance();
     
-    FacesContext context = FacesContext.getCurrentInstance();
+        context.addMessage(null, new FacesMessage("Salvo com Sucesso", "Mensagem"));
+        return null;
+    }
+    public String excluir(){
+        this.tbDvdFacade.remove(dvd);
+        
+        FacesContext context = FacesContext.getCurrentInstance();
     
-    context.addMessage(null, new FacesMessage("Salvo com sucesso!!!", "Mensagem"));
+        context.addMessage(null, new FacesMessage("Excluido com Sucesso", "Mensagem"));
+        return null;
+    }
+    public String atualiazar(){
+        this.tbDvdFacade.edit(dvd);
+        
+        FacesContext context = FacesContext.getCurrentInstance();
     
-    return null;
+        context.addMessage(null, new FacesMessage("Atualizado com Sucesso", "Mensagem"));
+        return null;
     }
     
-    public String alterar(){
-    this.dvdFacade.edit(dvd);
-    
-    FacesContext context = FacesContext.getCurrentInstance();
-    
-    context.addMessage(null, new FacesMessage("Alterado com sucesso!!!", "Mensagem"));
-    
-    return null;
+    public String montarPaginaInserir(){
+        return "/Dvd/InserirDvd";
     }
-    
-    public String exclui(){
-    this.dvdFacade.remove(dvd);
-    
-    FacesContext context = FacesContext.getCurrentInstance();
-    
-    context.addMessage(null, new FacesMessage("Removido com sucesso!!!", "Mensagem"));
-    
-    return null;
+    public String montarPaginaExcluir(){
+        return "/Dvd/ExcluirDvd";
     }
-    
-    
-    public TbDvd buscaId(int id){
-    this.dvdFacade.find(id);
-    return dvd;
+    public String montarPaginaAtualizar(){
+        return "/Dvd/AtualizarDvd";
     }
-    
-    public TbDvd buscaNome(String nome){
-    this.dvdFacade.buscaDvdNome(nome);
-    return dvd;
+    public String montarPaginaListar(){
+        //Ainda precisa ser feita
+        return null;
     }
-    
-    public TbDvd buscaAno(String ano){
-    this.dvdFacade.buscaDvdAno(ano);
-    return dvd;
-    }
-    
-    public TbDvd buscaDisponibilidade(String Disponibilidade){
-    this.dvdFacade.buscaDvdDisp(Disponibilidade);
-    return dvd;
-    }
-    
-    
     public DvdManagedBean() {
     }
     

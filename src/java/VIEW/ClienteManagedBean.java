@@ -3,33 +3,34 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package VIEW;
+package view;
 
-import Entidades.TbCliente;
-import Sessao.TbClienteFacade;
+import entidades.TbCliente;
 import javax.ejb.EJB;
 import javax.inject.Named;
+import javax.enterprise.context.Dependent;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
+import sessao.TbClienteFacade;
 
 /**
  *
- * @author Otávio
+ * @author Maxuel
  */
-@Named(value = "newJSFManagedBean")
+@Named(value = "clienteManagedBean")
 @ManagedBean
 @RequestScoped
 public class ClienteManagedBean {
 
     @EJB
-    private TbClienteFacade clienteFacade;
+    private TbClienteFacade tbClienteFacade;
     private TbCliente cliente;
 
     public TbCliente getCliente() {
-        if(cliente == null){
-        cliente = new TbCliente();
+        if(cliente==null){
+            cliente = new TbCliente();
         }
         return cliente;
     }
@@ -38,67 +39,42 @@ public class ClienteManagedBean {
         this.cliente = cliente;
     }
     
-    public String inserir(){
-    this.clienteFacade.create(cliente);
+    public String salvar(){
+        this.tbClienteFacade.create(cliente);
+        
+        FacesContext context = FacesContext.getCurrentInstance();
     
-    FacesContext context = FacesContext.getCurrentInstance();
+        context.addMessage(null, new FacesMessage("Salvo com Sucesso", "Mensagem"));
+        return null;
+    }
+    public String excluir(){
+        this.tbClienteFacade.remove(cliente);
+        FacesContext context = FacesContext.getCurrentInstance();
     
-    context.addMessage(null, new FacesMessage("Salvo com sucesso!!!", "Mensagem"));
+        context.addMessage(null, new FacesMessage("Excluido com Sucesso", "Mensagem"));
+        return null;
+    }
+    public String atualiazar(){
+        this.tbClienteFacade.edit(cliente);
+        FacesContext context = FacesContext.getCurrentInstance();
     
-    return null;
+        context.addMessage(null, new FacesMessage("Atualizado com Sucesso", "Mensagem"));
+        return null;
     }
     
-    public String alterar(){
-    this.clienteFacade.edit(cliente);
-    
-    FacesContext context = FacesContext.getCurrentInstance();
-    
-    context.addMessage(null, new FacesMessage("Alterado com sucesso!!!", "Mensagem"));
-    
-    return null;
+    public String montarPaginaInserir(){
+        return "/Cliente/InserirCliente";
     }
-    
-    public String exclui(){
-    this.clienteFacade.remove(cliente);
-    
-    FacesContext context = FacesContext.getCurrentInstance();
-    
-    context.addMessage(null, new FacesMessage("Removido com sucesso!!!", "Mensagem"));
-    
-    return null;
+    public String montarPaginaExcluir(){
+        return "/Cliente/ExcluirCliente";
     }
-    
-    public TbCliente buscaId( int id){
-    this.clienteFacade.find(id);
-    
-    return cliente;
+    public String montarPaginaAtualizar(){
+        return "/Cliente/AtualizarCliente";
     }
-    
-    public TbCliente buscaNome( String nome){
-    this.clienteFacade.buscaclientenome(nome);
-    
-    return cliente;
+    public String montarPaginaListar(){
+        //Ainda precisa ser feita
+        return null;
     }
-    
-    public TbCliente buscaCpf( String cpf){
-    this.clienteFacade.buscaclientecpf(cpf);
-    
-    return cliente;
-    }
-    
-    public TbCliente buscaEndereco( String end){
-    this.clienteFacade.buscaclienteend(end);
-    
-    return cliente;
-    }
-    
-    public TbCliente buscaFone( String fone){
-    this.clienteFacade.buscaclientefone(fone);
-    
-    return cliente;
-    }
-    
-    
     
     public ClienteManagedBean() {
     }

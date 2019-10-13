@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Entidades;
+package entidades;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -23,7 +23,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Otávio
+ * @author Maxuel
  */
 @Entity
 @Table(name = "tb_funcionarios")
@@ -171,7 +171,7 @@ public class TbFuncionarios implements Serializable {
 
     @Override
     public String toString() {
-        return "Entidades.TbFuncionarios[ idFuncionario=" + idFuncionario + " ]";
+        return "entidades.TbFuncionarios[ idFuncionario=" + idFuncionario + " ]";
     }
     
 }

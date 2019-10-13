@@ -3,20 +3,21 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package VIEW;
+package view;
 
-import Entidades.TbAluga;
-import Sessao.TbAlugaFacade;
+import entidades.TbAluga;
 import javax.ejb.EJB;
 import javax.inject.Named;
+import javax.enterprise.context.Dependent;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
+import sessao.TbAlugaFacade;
 
 /**
  *
- * @author Otávio
+ * @author Maxuel
  */
 @Named(value = "alugaManagedBean")
 @ManagedBean
@@ -24,12 +25,14 @@ import javax.faces.context.FacesContext;
 public class AlugaManagedBean {
 
     @EJB
+    private TbAlugaFacade tbAlugaFacade;
+
     private TbAluga aluga;
-    private TbAlugaFacade alugaFacade;
 
     public TbAluga getAluga() {
-        if(aluga == null){
-        aluga = new TbAluga();
+        if(aluga==null)
+        {
+            aluga = new TbAluga();
         }
         return aluga;
     }
@@ -38,74 +41,42 @@ public class AlugaManagedBean {
         this.aluga = aluga;
     }
     
-    public String inserir(){
-    this.alugaFacade.create(aluga);
+    public String salvar(){
+        this.tbAlugaFacade.create(aluga);
+        FacesContext context = FacesContext.getCurrentInstance();
     
-    FacesContext context = FacesContext.getCurrentInstance();
+        context.addMessage(null, new FacesMessage("Salvo com Sucesso", "Mensagem"));
+        return null;
+    }
+    public String excluir(){
+        this.tbAlugaFacade.remove(aluga);
+        FacesContext context = FacesContext.getCurrentInstance();
     
-    context.addMessage(null, new FacesMessage("Salvo com sucesso!!!", "Mensagem"));
+        context.addMessage(null, new FacesMessage("Excluido com Sucesso", "Mensagem"));
+        return null;
+    }
+    public String atualiazar(){
+        this.tbAlugaFacade.edit(aluga);
+        
+        FacesContext context = FacesContext.getCurrentInstance();
     
-    return null;
+        context.addMessage(null, new FacesMessage("Atualizado com Sucesso", "Mensagem"));
+        return null;
     }
     
-    public String alterar(){
-    this.alugaFacade.edit(aluga);
-    
-    FacesContext context = FacesContext.getCurrentInstance();
-    
-    context.addMessage(null, new FacesMessage("Alterado com sucesso!!!", "Mensagem"));
-    
-    return null;
+    public String montarPaginaInserir(){
+        return "/Aluga/InserirAluga";
     }
-    
-    public String exclui(){
-    this.alugaFacade.remove(aluga);
-    
-    FacesContext context = FacesContext.getCurrentInstance();
-    
-    context.addMessage(null, new FacesMessage("Removido com sucesso!!!", "Mensagem"));
-    
-    return null;
+    public String montarPaginaExcluir(){
+        return "/Aluga/ExcluirAluga";
     }
-    
-    
-    public TbAluga buscaId(int id){
-    this.alugaFacade.find(id);
-    
-    return aluga;
+    public String montarPaginaAtualizar(){
+        return "/Aluga/AtualizarAluga";
     }
-    
-    public TbAluga buscaIdDvd(int idDvd){
-    this.alugaFacade.buscaAlugaIdDvD(idDvd);
-    
-    return aluga;
+    public String montarPaginaListar(){
+        //Ainda precisa ser feita
+        return null;
     }
-    
-    
-    public TbAluga buscaIdCliente(int idCliente){
-    this.alugaFacade.buscaAlugaIdCliente(idCliente);
-    
-    return aluga;
-    }
-    
-    public TbAluga buscaDtaEntregue(String Dta){
-    this.alugaFacade.buscaAlugaDtaEntregue(Dta);
-    
-    return aluga;
-    }
-    
-    public TbAluga buscaAluga(String Dta){
-    this.alugaFacade.buscaAlugaDtaAluga(Dta);
-    
-    return aluga;
-    }
-    
-    public TbAluga buscaEntregue(String entregue){
-    this.alugaFacade.buscaEntregue(entregue);
-    
-    return aluga;
-    }
-    
     public AlugaManagedBean() {
     }
     

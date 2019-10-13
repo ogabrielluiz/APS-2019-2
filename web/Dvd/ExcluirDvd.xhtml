@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+         <p:layout style="min-width:900px;min-height:900px;">
+    <p:layoutUnit position="west" resizable="true" size="125" minSize="125" maxSize="200">
+        <h:form>
+        Funcionarios
+        <h:commandLink id="alterarD" action="#{dvdManagedBean.montarPaginaAtualizar()}">Alterar</h:commandLink><br></br>
+        <h:commandLink id="inserirD" action="#{dvdManagedBean.montarPaginaInserir()}">Inserir</h:commandLink><br></br>
+        <h:commandLink id="listarD" action="#{dvdManagedBean.montarPaginaListar()}">Lista</h:commandLink><br></br>
+    </h:form>
+        </p:layoutUnit>
+             <p:layoutUnit position="center">
+        <f:view>
+            <h:form>
+                <h1><h:outputText value="Excluir"/></h1>
+                <p:growl id="growl" showDetail="true" sticky="true" />
+                <p:panelGrid columns="2">
+                    <p:outputLabel value="IdDvd:" for="idDvd" />
+                    <p:inputText id="idDvd" value="#{dvdManagedBean.dvd.idDvd}" title="IdDvd" required="true" requiredMessage="The IdDvd field is required."/>
+                    <p:outputLabel value="NmDvd:" for="nmDvd" />
+                    <p:inputText id="nmDvd" value="#{dvdManagedBean.dvd.nmDvd}" title="NmDvd" />
+                    <p:outputLabel value="DispDvd:" for="dispDvd" />
+                    <p:inputText id="dispDvd" value="#{dvdManagedBean.dvd.dispDvd}" title="DispDvd" />
+                    <p:outputLabel value="SinpDvd:" for="sinpDvd" />
+                    <p:inputText id="sinpDvd" value="#{dvdManagedBean.dvd.sinpDvd}" title="SinpDvd" />
+                    <p:outputLabel value="AnoDvd:" for="anoDvd" />
+                    <p:inputText id="anoDvd" value="#{dvdManagedBean.dvd.anoDvd}" title="AnoDvd" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </p:inputText>
+                    <p:outputLabel value="IdFuncionario:" for="idFuncionario" />
+                    <p:selectOneMenu id="idFuncionario" value="#{dvdManagedBean.dvd.idFuncionario}" >
+                        <!-- TODO: update below reference to list of available items-->
+                        <f:selectItems value="#{fixme}"/>
+                    </p:selectOneMenu>
+                    <p:outputLabel value="TbCategoria:" for="tbCategoria" />
+                    <p:selectOneMenu id="tbCategoria" value="#{dvdManagedBean.dvd.tbCategoria}" >
+                        <!-- TODO: update below reference to list of available items-->
+                        <f:selectItems value="#{fixme}"/>
+                    </p:selectOneMenu>
+                </p:panelGrid>
+                <p:commandButton value="Excluir" action="#{dvdManagedBean.excluir()}" update="@form" />
+            </h:form>
+        </f:view>
+             </p:layoutUnit>
+         </p:layout>
+
+    </h:body>
+</html>
+

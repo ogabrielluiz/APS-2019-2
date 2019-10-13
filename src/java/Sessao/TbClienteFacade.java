@@ -3,21 +3,21 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Sessao;
+package sessao;
 
-import Entidades.TbCliente;
+import entidades.TbCliente;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 /**
  *
- * @author Otávio
+ * @author Maxuel
  */
 @Stateless
 public class TbClienteFacade extends AbstractFacade<TbCliente> {
 
-    @PersistenceContext(unitName = "APSLocadoraJSFPU")
+    @PersistenceContext(unitName = "TestandoApsPU")
     private EntityManager em;
 
     @Override
@@ -29,19 +29,4 @@ public class TbClienteFacade extends AbstractFacade<TbCliente> {
         super(TbCliente.class);
     }
     
-    public TbCliente buscaclientenome(String nome){
-    return getEntityManager().find(TbCliente.class, nome);
-    }
-    
-    public TbCliente buscaclientecpf(String cpf){
-    return getEntityManager().find(TbCliente.class, cpf);
-    }
-    
-    public TbCliente buscaclienteend(String endereco){
-    return getEntityManager().find(TbCliente.class, endereco);
-    }
-    
-    public TbCliente buscaclientefone(String fone){
-    return getEntityManager().find(TbCliente.class, fone);
-    }
 }

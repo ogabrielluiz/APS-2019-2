@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Entidades;
+package entidades;
 
 import java.io.Serializable;
 import javax.persistence.Basic;
@@ -13,7 +13,7 @@ import javax.validation.constraints.NotNull;
 
 /**
  *
- * @author Otávio
+ * @author Maxuel
  */
 @Embeddable
 public class TbAlugaPK implements Serializable {
@@ -77,7 +77,7 @@ public class TbAlugaPK implements Serializable {
 
     @Override
     public String toString() {
-        return "Entidades.TbAlugaPK[ idDvd=" + idDvd + ", idCliente=" + idCliente + " ]";
+        return "entidades.TbAlugaPK[ idDvd=" + idDvd + ", idCliente=" + idCliente + " ]";
     }
     
 }
