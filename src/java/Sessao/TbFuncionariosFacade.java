@@ -6,6 +6,7 @@
 package sessao;
 
 import entidades.TbFuncionarios;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -27,6 +28,10 @@ public class TbFuncionariosFacade extends AbstractFacade<TbFuncionarios> {
 
     public TbFuncionariosFacade() {
         super(TbFuncionarios.class);
+    }
+    
+    public List<TbFuncionarios> recuperarTodos(){
+        return em.createQuery("select f from TbFuncionarios as f").getResultList();
     }
     
 }

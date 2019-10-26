@@ -6,6 +6,7 @@
 package sessao;
 
 import entidades.TbCliente;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -27,6 +28,10 @@ public class TbClienteFacade extends AbstractFacade<TbCliente> {
 
     public TbClienteFacade() {
         super(TbCliente.class);
+    }
+    
+    public List<TbCliente> recuperarTodos(){
+        return em.createQuery("select c from TbCliente as c").getResultList();
     }
     
 }

@@ -6,6 +6,7 @@
 package sessao;
 
 import entidades.TbCategoria;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -27,6 +28,10 @@ public class TbCategoriaFacade extends AbstractFacade<TbCategoria> {
 
     public TbCategoriaFacade() {
         super(TbCategoria.class);
+    }
+    
+    public List<TbCategoria> retornarTodos(){
+        return em.createQuery("select c from TbCategoria as c").getResultList();
     }
     
 }

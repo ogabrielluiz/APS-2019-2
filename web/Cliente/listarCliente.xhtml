@@ -1,0 +1,88 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h2>Listando Clientes</h2>
+        <input type="hidden" value="#{clienteManagedBean.recuperar()}" var="carregar"/>
+        <h:form>
+            <h:panelGrid>
+                <p:dataTable id="tbCliente" value="#{clienteManagedBean.clientes}" var="cliente">
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Id"/>
+                        </f:facet>
+                        <h:outputText value="#{cliente.idCliente}"/>
+                    </p:column>
+                    <p:column>
+                    <f:facet name="header">
+                        <h:outputText value="Cadastrado por"/>
+                    </f:facet>
+                    <h:outputText value="#{cliente.idFuncionario.nmFuncionario}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Data"/>
+                        </f:facet>
+                        <h:outputText value="#{cliente.datnascCliente}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Email"/>
+                        </f:facet>
+                        <h:outputText value="#{cliente.emailCliente}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Nome Completo"/>
+                        </f:facet>
+                        <h:outputText value="#{cliente.nmCliente}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Cpf"/>
+                        </f:facet>
+                        <h:outputText value="#{cliente.cpfCliente}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Endereço"/>
+                        </f:facet>
+                        <h:outputText value="#{cliente.endCliente}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Numero"/>
+                        </f:facet>
+                        <h:outputText value="#{cliente.nrCliente}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Bairro"/>
+                        </f:facet>
+                        <h:outputText value="#{cliente.brCliente}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value=" "/>
+                        </f:facet>
+                        <h:commandLink action="#{clienteManagedBean.montarPaginaAtualizar()}" value="">
+                            <p:graphicImage value="img/atualizar.png" width="40px" height="40px" title="Editar #{cliente.nmCliente}"/>
+                        </h:commandLink>
+                            <h:outputText value=" ">
+                            </h:outputText>
+                        <h:commandLink action="#{clienteManagedBean.montarPaginaExcluir()}" value="">
+                            <p:graphicImage value="img/deletar.png" width="40px" height="40px" title="Excluir #{cliente.nmCliente}"/>
+                            </h:commandLink>
+                    </p:column>
+                </p:dataTable>
+            </h:panelGrid>
+        </h:form>
+    </h:body>
+</html>
+

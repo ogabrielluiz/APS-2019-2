@@ -9,9 +9,15 @@
     </h:head>
     <h:body>
         <f:view>
-
-
+            <p:layout style="min-width:900px;min-height:900px;">
+        <p:layoutUnit position="west" resizable="true" size="125" minSize="125" maxSize="200">
+        <h:form>
+        Categoria<br></br>
+        <h:commandLink id="alterarF" action="#{categoriaManagedBean.montarPaginaInserir()}">Inserir</h:commandLink><br></br>
+    </h:form>
+        </p:layoutUnit>
             <h:form>
+                <p:layoutUnit position="center">
                 <h1><h:outputText value="Excluir"/></h1>
                 <p:panelGrid columns="2">
                     <p:outputLabel value="IdDvd:" for="idDvd" />
@@ -23,8 +29,11 @@
                         <!-- TODO: update below reference to list of available items-->
                         <f:selectItems value="#{fixme}"/>
                     </p:selectOneMenu>
+                    <p:commandButton action="#{categoriaManagedBean.excluir()}" value="Excluir"/>
                 </p:panelGrid>
+                </p:layoutUnit>
             </h:form>
+            </p:layout>
         </f:view>
 
     </h:body>

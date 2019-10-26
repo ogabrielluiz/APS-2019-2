@@ -6,6 +6,8 @@
 package sessao;
 
 import entidades.TbAluga;
+import entidades.TbAlugaPK;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -27,6 +29,10 @@ public class TbAlugaFacade extends AbstractFacade<TbAluga> {
 
     public TbAlugaFacade() {
         super(TbAluga.class);
+    }
+    
+    public List<TbAluga> recuperarTodos(){
+        return em.createQuery("select a from TbAluga as a").getResultList();
     }
     
 }

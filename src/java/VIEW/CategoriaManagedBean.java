@@ -12,7 +12,9 @@ import javax.enterprise.context.Dependent;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.faces.model.ListDataModel;
 import sessao.TbCategoriaFacade;
 
 /**
@@ -21,12 +23,29 @@ import sessao.TbCategoriaFacade;
  */
 @Named(value = "categoriaManagedBean")
 @ManagedBean
-@RequestScoped
+@SessionScoped
 public class CategoriaManagedBean {
 
     @EJB
     private TbCategoriaFacade tbCategoriaFacade;
     private TbCategoria categoria;
+    
+    private ListDataModel categorias;
+
+    public ListDataModel getCategorias() {
+        return categorias;
+    }
+
+    public void setCategorias(ListDataModel categorias) {
+        this.categorias = categorias;
+    }
+    
+    private void retornarC(){
+        categorias = new ListDataModel(tbCategoriaFacade.retornarTodos());
+    }
+    public void retornar(){
+        this.retornarC();
+    }
 
     public TbCategoria getCategoria() {
         if(categoria==null){
@@ -44,35 +63,36 @@ public class CategoriaManagedBean {
         FacesContext context = FacesContext.getCurrentInstance();
     
         context.addMessage(null, new FacesMessage("Salvo com Sucesso", "Mensagem"));
-        return null;
+        return "listarCategoria";
     }
     public String excluir(){
         this.tbCategoriaFacade.remove(categoria);
         FacesContext context = FacesContext.getCurrentInstance();
     
         context.addMessage(null, new FacesMessage("Excluido com Sucesso", "Mensagem"));
-        return null;
+        return "listarCategoria";
     }
     public String atualiazar(){
         this.tbCategoriaFacade.edit(categoria);
         FacesContext context = FacesContext.getCurrentInstance();
     
         context.addMessage(null, new FacesMessage("Atualizado com Sucesso", "Mensagem"));
-        return null;
+        return "listarCategoria";
     }
     
     public String montarPaginaInserir(){
         return "/Categoria/InserirCategoria";
     }
     public String montarPaginaExcluir(){
+        categoria = (TbCategoria)categorias.getRowData();
         return "/Categoria/ExcluirCategoria";
     }
     public String montarPaginaAtualizar(){
+        categoria = (TbCategoria)categorias.getRowData();
         return "/Categoria/AtualizarCategoria";
     }
     public String montarPaginaListar(){
-        //Ainda precisa ser feita
-        return null;
+        return "/Categoria/listarCategoria";
     }
     public CategoriaManagedBean() {
     }

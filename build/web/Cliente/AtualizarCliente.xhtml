@@ -9,36 +9,45 @@
     </h:head>
     <h:body>
         <f:view>
-
-
+            <p:layout style="min-width:900px;min-height:900px;">
+        <p:layoutUnit position="west" resizable="true" size="125" minSize="125" maxSize="200">
+        <h:form>
+        Cliente<br></br>
+        <h:commandLink id="alterarF" action="#{clienteManagedBean.montarPaginaInserir()}">Salvar</h:commandLink><br></br>
+    </h:form>
+        </p:layoutUnit>
             <h:form>
+                <p:layoutUnit position="center">
                 <h1><h:outputText value="Atualizar"/></h1>
                 <p:panelGrid columns="2">
                     <p:outputLabel value="IdCliente:" for="idCliente" />
                     <p:inputText id="idCliente" value="#{clienteManagedBean.cliente.idCliente}" title="IdCliente" required="true" requiredMessage="The IdCliente field is required."/>
-                    <p:outputLabel value="DatnascCliente:" for="datnascCliente" />
+                    <p:outputLabel value="Data de Nascimento:" for="datnascCliente" />
                     <p:inputText id="datnascCliente" value="#{clienteManagedBean.cliente.datnascCliente}" title="DatnascCliente" >
                         <f:convertDateTime pattern="MM/dd/yyyy" />
                     </p:inputText>
-                    <p:outputLabel value="EmailCliente:" for="emailCliente" />
+                    <p:outputLabel value="Email:" for="emailCliente" />
                     <p:inputText id="emailCliente" value="#{clienteManagedBean.cliente.emailCliente}" title="EmailCliente" />
-                    <p:outputLabel value="NmCliente:" for="nmCliente" />
+                    <p:outputLabel value="Nome Completo:" for="nmCliente" />
                     <p:inputText id="nmCliente" value="#{clienteManagedBean.cliente.nmCliente}" title="NmCliente" />
-                    <p:outputLabel value="CpfCliente:" for="cpfCliente" />
+                    <p:outputLabel value="Cpf:" for="cpfCliente" />
                     <p:inputText id="cpfCliente" value="#{clienteManagedBean.cliente.cpfCliente}" title="CpfCliente" />
-                    <p:outputLabel value="EndCliente:" for="endCliente" />
+                    <p:outputLabel value="Endereço:" for="endCliente" />
                     <p:inputText id="endCliente" value="#{clienteManagedBean.cliente.endCliente}" title="EndCliente" />
-                    <p:outputLabel value="NrCliente:" for="nrCliente" />
+                    <p:outputLabel value="Numero:" for="nrCliente" />
                     <p:inputText id="nrCliente" value="#{clienteManagedBean.cliente.nrCliente}" title="NrCliente" />
-                    <p:outputLabel value="BrCliente:" for="brCliente" />
+                    <p:outputLabel value="Bairro" for="brCliente" />
                     <p:inputText id="brCliente" value="#{clienteManagedBean.cliente.brCliente}" title="BrCliente" />
-                    <p:outputLabel value="IdFuncionario:" for="idFuncionario" />
+                    <p:outputLabel value="Funcionario:" for="idFuncionario" />
                     <p:selectOneMenu id="idFuncionario" value="#{clienteManagedBean.cliente.idFuncionario}" >
                         <!-- TODO: update below reference to list of available items-->
                         <f:selectItems value="#{fixme}"/>
                     </p:selectOneMenu>
+                    <p:commandButton action="#{clienteManagedBean.atualiazar()}" value="Atualizar"/>
                 </p:panelGrid>
+                </p:layoutUnit>
             </h:form>
+            </p:layout>
         </f:view>
 
     </h:body>

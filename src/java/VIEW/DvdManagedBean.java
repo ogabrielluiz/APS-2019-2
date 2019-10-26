@@ -6,13 +6,17 @@
 package view;
 
 import entidades.TbDvd;
+import entidades.TbFuncionarios;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.Dependent;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.faces.model.ListDataModel;
 import sessao.TbDvdFacade;
 
 /**
@@ -21,13 +25,29 @@ import sessao.TbDvdFacade;
  */
 @Named(value = "dvdManagedBean")
 @ManagedBean
-@RequestScoped
+@SessionScoped
 public class DvdManagedBean {
 
     @EJB
     private TbDvdFacade tbDvdFacade;
     private TbDvd dvd;
+    
+    private ListDataModel dvds;
 
+    public ListDataModel getDvds() {
+        return dvds;
+    }
+
+    public void setDvds(ListDataModel dvds) {
+        this.dvds = dvds;
+    }
+    private void recuperarD(){
+        dvds = new ListDataModel(tbDvdFacade.recuperarTodos());
+    }
+    public void recuperar(){
+        this.recuperarD();
+    }
+    
     public TbDvd getDvd() {
         if(dvd==null)
         {
@@ -45,7 +65,7 @@ public class DvdManagedBean {
         FacesContext context = FacesContext.getCurrentInstance();
     
         context.addMessage(null, new FacesMessage("Salvo com Sucesso", "Mensagem"));
-        return null;
+        return "listarDvd";
     }
     public String excluir(){
         this.tbDvdFacade.remove(dvd);
@@ -53,7 +73,7 @@ public class DvdManagedBean {
         FacesContext context = FacesContext.getCurrentInstance();
     
         context.addMessage(null, new FacesMessage("Excluido com Sucesso", "Mensagem"));
-        return null;
+        return "listarDvd";
     }
     public String atualiazar(){
         this.tbDvdFacade.edit(dvd);
@@ -61,21 +81,22 @@ public class DvdManagedBean {
         FacesContext context = FacesContext.getCurrentInstance();
     
         context.addMessage(null, new FacesMessage("Atualizado com Sucesso", "Mensagem"));
-        return null;
+        return "listarDvd";
     }
     
     public String montarPaginaInserir(){
         return "/Dvd/InserirDvd";
     }
     public String montarPaginaExcluir(){
+        dvd = (TbDvd)dvds.getRowData();
         return "/Dvd/ExcluirDvd";
     }
     public String montarPaginaAtualizar(){
+        dvd = (TbDvd)dvds.getRowData();
         return "/Dvd/AtualizarDvd";
     }
     public String montarPaginaListar(){
-        //Ainda precisa ser feita
-        return null;
+        return "/Dvd/listarDvd";
     }
     public DvdManagedBean() {
     }

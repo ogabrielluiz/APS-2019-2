@@ -13,7 +13,6 @@
     <p:layoutUnit position="west" resizable="true" size="125" minSize="125" maxSize="200">
         <h:form>
         Funcionarios
-        <h:commandLink id="alterarF" action="#{funcionarioManagedBean.montarPaginaAtualizar()}">Alterar</h:commandLink><br></br>
         <h:commandLink id="insereF" action="#{funcionarioManagedBean.montarPaginaInserir()}">Inserir</h:commandLink><br></br>
         <h:commandLink id="listarF" action="#{funcionarioManagedBean.montarPaginaListar()}">Lista</h:commandLink><br></br>
     </h:form>
@@ -24,19 +23,19 @@
                 <h1><h:outputText value="Atualizar"/></h1>
                 <p:growl id="growl" showDetail="true" sticky="true" />
                 <p:panelGrid columns="2">
-                    <p:outputLabel value="IdFuncionario:" for="idFuncionario" />
+                    <p:outputLabel value="Cracha:" for="idFuncionario" />
                     <p:inputText id="idFuncionario" value="#{funcionarioManagedBean.funcionarios.idFuncionario}" title="IdFuncionario" required="true" requiredMessage="The IdFuncionario field is required."/>
-                    <p:outputLabel value="NmFuncionario:" for="nmFuncionario" />
+                    <p:outputLabel value="Nome Completo:" for="nmFuncionario" />
                     <p:inputText id="nmFuncionario" value="#{funcionarioManagedBean.funcionarios.nmFuncionario}" title="NmFuncionario" />
-                    <p:outputLabel value="SalFuncionario:" for="salFuncionario" />
+                    <p:outputLabel value="Salario:" for="salFuncionario" />
                     <p:inputText id="salFuncionario" value="#{funcionarioManagedBean.funcionarios.salFuncionario}" title="SalFuncionario" />
-                    <p:outputLabel value="EndFuncionario:" for="endFuncionario" />
+                    <p:outputLabel value="Endereço:" for="endFuncionario" />
                     <p:inputText id="endFuncionario" value="#{funcionarioManagedBean.funcionarios.endFuncionario}" title="EndFuncionario" />
-                    <p:outputLabel value="CpfFuncionario:" for="cpfFuncionario" />
+                    <p:outputLabel value="Cpf:" for="cpfFuncionario" />
                     <p:inputText id="cpfFuncionario" value="#{funcionarioManagedBean.funcionarios.cpfFuncionario}" title="CpfFuncionario" />
-                    <p:outputLabel value="RuaFuncionario:" for="ruaFuncionario" />
+                    <p:outputLabel value="Rua:" for="ruaFuncionario" />
                     <p:inputText id="ruaFuncionario" value="#{funcionarioManagedBean.funcionarios.ruaFuncionario}" title="RuaFuncionario" />
-                    <p:outputLabel value="NrFuncionario:" for="nrFuncionario" />
+                    <p:outputLabel value="Nr:" for="nrFuncionario" />
                     <p:inputText id="nrFuncionario" value="#{funcionarioManagedBean.funcionarios.nrFuncionario}" title="NrFuncionario" />
                 </p:panelGrid>
                 <p:commandButton value="Atualizar" action="#{funcionarioManagedBean.atualizar()}" update="@form" />

@@ -12,7 +12,9 @@ import javax.enterprise.context.Dependent;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.faces.model.ListDataModel;
 import sessao.TbAlugaFacade;
 
 /**
@@ -21,13 +23,28 @@ import sessao.TbAlugaFacade;
  */
 @Named(value = "alugaManagedBean")
 @ManagedBean
-@RequestScoped
+@SessionScoped
 public class AlugaManagedBean {
 
     @EJB
     private TbAlugaFacade tbAlugaFacade;
 
     private TbAluga aluga;
+    private ListDataModel alugas;
+
+    public ListDataModel getAlugas() {
+        return alugas;
+    }
+
+    public void setAlugas(ListDataModel alugas) {
+        this.alugas = alugas;
+    }
+    private void recuperarA(){
+        alugas = new ListDataModel(tbAlugaFacade.recuperarTodos());
+    }
+    public void recuperar(){
+        this.recuperarA();
+    }
 
     public TbAluga getAluga() {
         if(aluga==null)
@@ -68,14 +85,15 @@ public class AlugaManagedBean {
         return "/Aluga/InserirAluga";
     }
     public String montarPaginaExcluir(){
+        aluga = (TbAluga)alugas.getRowData();
         return "/Aluga/ExcluirAluga";
     }
     public String montarPaginaAtualizar(){
+        aluga = (TbAluga)alugas.getRowData();
         return "/Aluga/AtualizarAluga";
     }
     public String montarPaginaListar(){
-        //Ainda precisa ser feita
-        return null;
+        return "/Aluga/listarAluga";
     }
     public AlugaManagedBean() {
     }

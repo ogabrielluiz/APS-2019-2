@@ -9,33 +9,42 @@
     </h:head>
     <h:body>
         <f:view>
-
-
+            <p:layout style="min-width:900px;min-height:900px;">
+        <p:layoutUnit position="west" resizable="true" size="125" minSize="125" maxSize="200">
+        <h:form>
+        Aluga<br></br>
+        <h:commandLink id="alterarF" action="#{alugaManagedBean.montarPaginaInserir()}">Insere</h:commandLink><br></br>
+    </h:form>
+        </p:layoutUnit>
             <h:form>
+                <p:layoutUnit position="center">
                 <h1><h:outputText value="Atualizar"/></h1>
                 <p:panelGrid columns="2">
-                    <p:outputLabel value="DtAluga:" for="dtAluga" />
+                    <p:outputLabel value="Data Alugada:" for="dtAluga" />
                     <p:inputText id="dtAluga" value="#{alugaManagedBean.aluga.dtAluga}" title="DtAluga" >
                         <f:convertDateTime pattern="MM/dd/yyyy" />
                     </p:inputText>
-                    <p:outputLabel value="DtParaentrega:" for="dtParaentrega" />
+                    <p:outputLabel value="Data para Entrega:" for="dtParaentrega" />
                     <p:inputText id="dtParaentrega" value="#{alugaManagedBean.aluga.dtParaentrega}" title="DtParaentrega" >
                         <f:convertDateTime pattern="MM/dd/yyyy" />
                     </p:inputText>
                     <p:outputLabel value="Entregue:" for="entregue" />
                     <p:inputText id="entregue" value="#{alugaManagedBean.aluga.entregue}" title="Entregue" />
-                    <p:outputLabel value="TbCliente:" for="tbCliente" />
+                    <p:outputLabel value="Cliente:" for="tbCliente" />
                     <p:selectOneMenu id="tbCliente" value="#{alugaManagedBean.aluga.tbCliente}" required="true" requiredMessage="The TbCliente field is required.">
                         <!-- TODO: update below reference to list of available items-->
                         <f:selectItems value="#{fixme}"/>
                     </p:selectOneMenu>
-                    <p:outputLabel value="TbDvd:" for="tbDvd" />
+                    <p:outputLabel value="Filme:" for="tbDvd" />
                     <p:selectOneMenu id="tbDvd" value="#{alugaManagedBean.aluga.tbDvd}" required="true" requiredMessage="The TbDvd field is required.">
                         <!-- TODO: update below reference to list of available items-->
                         <f:selectItems value="#{fixme}"/>
                     </p:selectOneMenu>
+                    <p:commandButton action="#{alugaManagedBean.atualiazar()}" value="Atualizar"/>
                 </p:panelGrid>
+                </p:layoutUnit>
             </h:form>
+            </p:layout>
         </f:view>
 
     </h:body>

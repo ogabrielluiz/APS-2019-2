@@ -12,7 +12,9 @@ import javax.enterprise.context.Dependent;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.faces.model.ListDataModel;
 import sessao.TbClienteFacade;
 
 /**
@@ -21,13 +23,30 @@ import sessao.TbClienteFacade;
  */
 @Named(value = "clienteManagedBean")
 @ManagedBean
-@RequestScoped
+@SessionScoped
 public class ClienteManagedBean {
 
     @EJB
     private TbClienteFacade tbClienteFacade;
     private TbCliente cliente;
+    
+    private ListDataModel clientes;
 
+    public ListDataModel getClientes() {
+        return clientes;
+    }
+
+    public void setClientes(ListDataModel clientes) {
+        this.clientes = clientes;
+    }
+    
+    private void recuperarC(){
+        clientes = new ListDataModel(tbClienteFacade.recuperarTodos());
+    }
+    public void recuperar(){
+       this.recuperarC();
+    }
+    
     public TbCliente getCliente() {
         if(cliente==null){
             cliente = new TbCliente();
@@ -45,35 +64,36 @@ public class ClienteManagedBean {
         FacesContext context = FacesContext.getCurrentInstance();
     
         context.addMessage(null, new FacesMessage("Salvo com Sucesso", "Mensagem"));
-        return null;
+        return "listarCliente";
     }
     public String excluir(){
         this.tbClienteFacade.remove(cliente);
         FacesContext context = FacesContext.getCurrentInstance();
     
         context.addMessage(null, new FacesMessage("Excluido com Sucesso", "Mensagem"));
-        return null;
+        return "listarCliente";
     }
     public String atualiazar(){
         this.tbClienteFacade.edit(cliente);
         FacesContext context = FacesContext.getCurrentInstance();
     
         context.addMessage(null, new FacesMessage("Atualizado com Sucesso", "Mensagem"));
-        return null;
+        return "listarCliente";
     }
     
     public String montarPaginaInserir(){
         return "/Cliente/InserirCliente";
     }
     public String montarPaginaExcluir(){
+        cliente = (TbCliente)clientes.getRowData();
         return "/Cliente/ExcluirCliente";
     }
     public String montarPaginaAtualizar(){
+        cliente = (TbCliente)clientes.getRowData();
         return "/Cliente/AtualizarCliente";
     }
     public String montarPaginaListar(){
-        //Ainda precisa ser feita
-        return null;
+        return "/Cliente/listarCliente";
     }
     
     public ClienteManagedBean() {
