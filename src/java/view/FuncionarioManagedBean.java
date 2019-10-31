@@ -12,7 +12,9 @@ import javax.enterprise.context.Dependent;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.faces.model.ListDataModel;
 import sessao.TbFuncionariosFacade;
 
 /**
@@ -21,12 +23,29 @@ import sessao.TbFuncionariosFacade;
  */
 @Named(value = "funcionarioManagedBean")
 @ManagedBean
-@RequestScoped
+@SessionScoped
 public class FuncionarioManagedBean {
 
     @EJB
     private TbFuncionariosFacade tbFuncionariosFacade;
     private TbFuncionarios funcionarios;
+    
+    private ListDataModel funcionario;
+
+    public ListDataModel getFuncionario() {
+        return funcionario;
+    }
+
+    public void setFuncionario(ListDataModel funcionario) {
+        this.funcionario = funcionario;
+    }
+    
+    private void recuperarFuncionarios(){
+        this.funcionario = new ListDataModel(tbFuncionariosFacade.recuperarTodos());
+    }
+    public void recuperar(){
+        this.recuperarFuncionarios();
+    }
 
     public TbFuncionarios getFuncionarios() {
         if(funcionarios==null)
@@ -46,7 +65,7 @@ public class FuncionarioManagedBean {
         FacesContext context = FacesContext.getCurrentInstance();
     
         context.addMessage(null, new FacesMessage("Salvo com Sucesso", "Mensagem"));
-        return null;
+        return "listarFuncionarios";
     }
     public String excluir(){
         this.tbFuncionariosFacade.remove(funcionarios);
@@ -54,7 +73,7 @@ public class FuncionarioManagedBean {
         FacesContext context = FacesContext.getCurrentInstance();
     
         context.addMessage(null, new FacesMessage("Excluido com Sucesso", "Mensagem"));
-        return null;
+        return "listarFuncionarios";
     }
     public String atualizar(){
         this.tbFuncionariosFacade.edit(funcionarios);
@@ -62,20 +81,21 @@ public class FuncionarioManagedBean {
         FacesContext context = FacesContext.getCurrentInstance();
     
         context.addMessage(null, new FacesMessage("Atualizado com Sucesso", "Mensagem"));
-        return null;
+        return "listarFuncionarios";
     }
     public String montarPaginaInserir(){
         return "/Funcionarios/InserirFuncionario";
     }
     public String montarPaginaExcluir(){
+        funcionarios = (TbFuncionarios)funcionario.getRowData();
         return "/Funcionarios/ExcluirFuncionario";
     }
     public String montarPaginaAtualizar(){
+        funcionarios = (TbFuncionarios)funcionario.getRowData();
         return "/Funcionarios/AtualizarFuncionario";
     }
     public String montarPaginaListar(){
-        //Ainda precisa ser feita
-        return null;
+        return "/Funcionarios/listarFuncionarios";
     }
     public FuncionarioManagedBean() {
     }

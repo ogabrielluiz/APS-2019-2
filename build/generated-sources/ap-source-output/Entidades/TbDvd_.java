@@ -1,15 +1,15 @@
-package Entidades;
+package entidades;
 
-import Entidades.TbAluga;
-import Entidades.TbCategoria;
-import Entidades.TbFuncionarios;
+import entidades.TbAluga;
+import entidades.TbCategoria;
+import entidades.TbFuncionarios;
 import java.util.Date;
 import javax.annotation.Generated;
 import javax.persistence.metamodel.CollectionAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
-@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2019-10-13T12:47:50")
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2019-10-26T17:07:35")
 @StaticMetamodel(TbDvd.class)
 public class TbDvd_ { 
 
