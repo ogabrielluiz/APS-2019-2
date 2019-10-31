@@ -37,7 +37,9 @@
                     <p:inputText id="nrFuncionario" value="#{funcionarioManagedBean.funcionarios.nrFuncionario}" title="NrFuncionario" />
                 </p:panelGrid>
                 <p:commandButton value="Salvar" action="#{funcionarioManagedBean.salvar()}" update="@form" />
+                
             </h:form>
+            <p:commandButton action="index.xhtml" value="Primefaces welcome page" />
         </f:view>
         </p:layoutUnit>
         </p:layout>

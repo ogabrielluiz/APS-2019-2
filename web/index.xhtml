@@ -1,19 +1,26 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
     <h:head>
         <title>Facelet Title</title>
     </h:head>
     <h:body>
+        <p:layout style="min-width:900px;min-height:900px;">
+            <p:layoutUnit position="center" resizable="true" size="125" minSize="125" maxSize="200">
         <h:form>
-            <h:commandLink id="linkF" action="#{funcionarioManagedBean.montarPaginaInserir()}">Funcionarios</h:commandLink><br/>
-            <h:commandLink id="linkD" action="#{dvdManagedBean.montarPaginaInserir()}">Dvd</h:commandLink><br/>
-            <h:commandLink id="linkC" action="#{clienteManagedBean.montarPaginaInserir()}">Cliente</h:commandLink><br/>
-            <h:commandLink id="linkCa" action="#{categoriaManagedBean.montarPaginaInserir()}">Categoria</h:commandLink><br/>
-            <h:commandLink id="linkA" action="#{alugaManagedBean.montarPaginaInserir()}">Aluga</h:commandLink><br/>
+            <p:commandButton id="linkF" action="#{funcionarioManagedBean.montarPaginaInserir()}" value="Funcionarios" styleClass="ui-priority-primary" style="margin-right:20px;" />
+            <p:commandButton id="linkD" action="#{dvdManagedBean.montarPaginaInserir()}" value="Dvd" styleClass="ui-priority-primary" style="margin-right:20px;" />
+            <p:commandButton id="linkC" action="#{clienteManagedBean.montarPaginaInserir()}" value="Cliente" styleClass="ui-priority-primary" style="margin-right:20px;" />
+            <p:commandButton id="linkCa" action="#{categoriaManagedBean.montarPaginaInserir()}" value="Categoria" styleClass="ui-priority-primary" style="margin-right:20px;" />
+            <p:commandButton id="linkA" action="#{alugaManagedBean.montarPaginaInserir()}" value="Aluga" styleClass="ui-priority-primary" style="margin-right:20px;" />
         </h:form>
         <br />
+        <br />
+        
+        </p:layoutUnit>
+        </p:layout>
     </h:body>
 </html>
 

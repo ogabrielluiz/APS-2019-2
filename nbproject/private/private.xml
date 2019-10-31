@@ -3,29 +3,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Maxuel/Documents/NetBeansProjects/APS-2019-2/web/Dvd/ExcluirDvd.xhtml</file>
-            <file>file:/C:/Users/Maxuel/Documents/NetBeansProjects/APS-2019-2/src/java/Sessao/TbDvdFacade.java</file>
-            <file>file:/C:/Users/Maxuel/Documents/NetBeansProjects/APS-2019-2/web/Funcionarios/listarFuncionarios.xhtml</file>
-            <file>file:/C:/Users/Maxuel/Documents/NetBeansProjects/APS-2019-2/src/java/VIEW/DvdManagedBean.java</file>
-            <file>file:/C:/Users/Maxuel/Documents/NetBeansProjects/APS-2019-2/src/java/Entidades/TbFuncionarios.java</file>
-            <file>file:/C:/Users/Maxuel/Documents/NetBeansProjects/APS-2019-2/src/java/VIEW/FuncionarioManagedBean.java</file>
-            <file>file:/C:/Users/Maxuel/Documents/NetBeansProjects/APS-2019-2/web/Funcionarios/InserirFuncionario.xhtml</file>
-            <file>file:/C:/Users/Maxuel/Documents/NetBeansProjects/APS-2019-2/web/Funcionarios/ExcluirFuncionario.xhtml</file>
-            <file>file:/C:/Users/Maxuel/Documents/NetBeansProjects/APS-2019-2/src/java/Sessao/TbFuncionariosFacade.java</file>
-            <file>file:/C:/Users/Maxuel/Documents/NetBeansProjects/APS-2019-2/web/Dvd/listarDvd.xhtml</file>
-            <file>file:/C:/Users/Maxuel/Documents/NetBeansProjects/APS-2019-2/web/Aluga/InserirAluga.xhtml</file>
-            <file>file:/C:/Users/Maxuel/Documents/NetBeansProjects/APS-2019-2/web/Funcionarios/AtualizarFuncionario.xhtml</file>
-            <file>file:/C:/Users/Maxuel/Documents/NetBeansProjects/APS-2019-2/src/java/Entidades/TbAluga.java</file>
-            <file>file:/C:/Users/Maxuel/Documents/NetBeansProjects/APS-2019-2/web/Cliente/listarCliente.xhtml</file>
-            <file>file:/C:/Users/Maxuel/Documents/NetBeansProjects/APS-2019-2/src/java/Entidades/TbDvd.java</file>
-            <file>file:/C:/Users/Maxuel/Documents/NetBeansProjects/APS-2019-2/src/java/VIEW/ClienteManagedBean.java</file>
-            <file>file:/C:/Users/Maxuel/Documents/NetBeansProjects/APS-2019-2/web/Dvd/InserirDvd.xhtml</file>
-            <file>file:/C:/Users/Maxuel/Documents/NetBeansProjects/APS-2019-2/web/Dvd/AtualizarDvd.xhtml</file>
-            <file>file:/C:/Users/Maxuel/Documents/NetBeansProjects/APS-2019-2/src/java/Entidades/TbAlugaPK.java</file>
-            <file>file:/C:/Users/Maxuel/Documents/NetBeansProjects/APS-2019-2/src/conf/persistence.xml</file>
-            <file>file:/C:/Users/Maxuel/Documents/NetBeansProjects/APS-2019-2/src/java/Entidades/TbCliente.java</file>
-            <file>file:/C:/Users/Maxuel/Documents/NetBeansProjects/APS-2019-2/web/Cliente/InserirCliente.xhtml</file>
-            <file>file:/C:/Users/Maxuel/Documents/NetBeansProjects/APS-2019-2/src/java/Sessao/TbClienteFacade.java</file>
+            <file>file:/E:/GoogleDrive/Estudos/APS-2019-2/web/WEB-INF/glassfish-resources.xml</file>
+            <file>file:/E:/GoogleDrive/Estudos/APS-2019-2/web/Categoria/AtualizarCategoria.xhtml</file>
+            <file>file:/E:/GoogleDrive/Estudos/APS-2019-2/web/WEB-INF/web.xml</file>
+            <file>file:/E:/GoogleDrive/Estudos/APS-2019-2/web/Funcionarios/ExcluirFuncionario.xhtml</file>
+            <file>file:/E:/GoogleDrive/Estudos/APS-2019-2/web/Categoria/InserirCategoria.xhtml</file>
+            <file>file:/E:/GoogleDrive/Estudos/APS-2019-2/web/WEB-INF/beans.xml</file>
+            <file>file:/E:/GoogleDrive/Estudos/APS-2019-2/web/index.xhtml</file>
+            <file>file:/E:/GoogleDrive/Estudos/APS-2019-2/web/Funcionarios/AtualizarFuncionario.xhtml</file>
+            <file>file:/E:/GoogleDrive/Estudos/APS-2019-2/web/Funcionarios/InserirFuncionario.xhtml</file>
+            <file>file:/E:/GoogleDrive/Estudos/APS-2019-2/src/java/VIEW/CategoriaManagedBean.java</file>
         </group>
     </open-files>
 </project-private>
