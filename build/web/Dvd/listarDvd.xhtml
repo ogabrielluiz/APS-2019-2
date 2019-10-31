@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h2>Listando os DVD's</h2>
+        <input type="hidden" value="#{dvdManagedBean.recuperar()}" name="carregar"/>
+        <h:form>
+            <h:panelGrid>
+                <p:dataTable id="tbDvd" value="#{dvdManagedBean.dvds}" var="dvd">
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Numero "/>
+                        </f:facet>
+                        <h:outputText value="#{dvd.idDvd}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Nome"/>
+                        </f:facet>
+                        <h:outputText value="#{dvd.nmDvd}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Disponibilidade"/>
+                        </f:facet>
+                        <h:outputText value="#{dvd.dispDvd}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Sinopse"/>
+                        </f:facet>
+                        <h:outputText value="#{dvd.sinpDvd}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Ano"/>
+                        </f:facet>
+                        <h:outputText value="#{dvd.anoDvd}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Funcionario que Cadastrou"/>
+                        </f:facet>
+                        <h:outputText value="#{dvd.idFuncionario.nmFuncionario}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value=" "/>
+                        </f:facet>
+                        <h:commandLink action="#{dvdManagedBean.montarPaginaAtualizar()}" value="">
+                            <p:graphicImage value="img/atualizar.png" width="40px" height="40px" title="Editar #{dvd.nmDvd}"/>
+                        </h:commandLink>
+                            <h:outputText value=" ">
+                            </h:outputText>
+                        <h:commandLink action="#{dvdManagedBean.montarPaginaExcluir()}" value="">
+                                <p:graphicImage value="img/deletar.png" width="40px" height="40px" title="Excluir #{dvd.nmDvd}"/>
+                            </h:commandLink>
+                    </p:column>
+                </p:dataTable>
+            </h:panelGrid>
+        </h:form>
+    </h:body>
+</html>
+

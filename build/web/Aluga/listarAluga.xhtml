@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h2>Listar Alugueis</h2>
+        <input type="hidden" value="#{alugaManagedBean.recuperar()}" name="carregar"/>
+        <h:form>
+            <h:panelGrid>
+                <p:dataTable id="tbAluga" value="#{alugaManagedBean.alugas}" var="aluga">
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Filme"/>
+                        </f:facet>
+                        <h:outputText value="#{aluga.tbAlugaPK.idDvd}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Cliente"/>
+                        </f:facet>
+                        <h:outputText value="#{aluga.tbAlugaPK.idCliente}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Data Alugada"/>
+                        </f:facet>
+                        <h:outputText value="#{aluga.dtAluga}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Data para Entrega"/>
+                        </f:facet>
+                        <h:outputText value="#{aluga.dtParaentrega}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Entregue?"/>
+                        </f:facet>
+                        <h:outputText value="#{aluga.entregue}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value=" "/>
+                        </f:facet>
+                        <h:commandLink action="#{alugaManagedBean.montarPaginaAtualizar()}" value="">
+                            <p:graphicImage value="img/atualizar.png" width="40px" height="40px" title="Editar"/>
+                        </h:commandLink>
+                            <h:outputText value=" ">
+                            </h:outputText>
+                        <h:commandLink action="#{alugaManagedBean.montarPaginaExcluir()}" value="">
+                            <p:graphicImage value="img/deletar.png" width="40px" height="40px" title="Excluir"/>
+                            </h:commandLink>
+                    </p:column>
+                </p:dataTable>
+            </h:panelGrid>
+        </h:form>
+    </h:body>
+</html>
+
