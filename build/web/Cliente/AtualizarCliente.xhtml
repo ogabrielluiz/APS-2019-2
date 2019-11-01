@@ -1,20 +1,19 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
+       xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
         <title>Facelet Title</title>
     </h:head>
     <h:body>
         <f:view>
             <p:layout   style="min-width:900px;min-height:900px;">
-        <p:layoutUnit position="west" resizable="true" size="125" minSize="125" maxSize="200">
-        <h:form>
-        Cliente<br></br>
-        <h:commandLink id="alterarF" action="#{clienteManagedBean.montarPaginaInserir()}">Salvar</h:commandLink><br></br>
-    </h:form>
+         <p:layoutUnit position="west"  size="200" minSize="125" maxSize="200">
+
+        <ui:include src="/menubar.xhtml" />  
         </p:layoutUnit>
             <h:form>
                 <p:layoutUnit position="center">
