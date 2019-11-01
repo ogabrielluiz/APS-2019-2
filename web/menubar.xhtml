@@ -1,0 +1,57 @@
+<ui:composition 
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui">
+
+    <h:form>
+       
+    <p:panelMenu>
+        <p:submenu label="Funcionários" >
+            
+            <p:menuitem id="itemFI" action="#{funcionarioManagedBean.montarPaginaInserir()}" value="Inserir" styleClass="ui-priority-primary" />           
+            <p:menuitem id="itemFE" action="#{funcionarioManagedBean.montarPaginaExcluir()}" value="Excluir" styleClass="ui-priority-primary" />
+            <p:menuitem id="itemFA" action="#{funcionarioManagedBean.montarPaginaAtualizar()}" value="Atualizar" styleClass="ui-priority-primary" />
+            <p:menuitem id="itemFL" action="#{funcionarioManagedBean.montarPaginaListar()}" value="Listar" styleClass="ui-priority-primary" />           
+
+        </p:submenu>
+        <p:submenu label="DVD">
+            
+            <p:menuitem id="itemDI" action="#{dvdManagedBean.montarPaginaInserir()}" value="Inserir" styleClass="ui-priority-primary" style="margin-right:20px;"/>
+            <p:menuitem id="itemDE" action="#{dvdManagedBean.montarPaginaExcluir()}" value="Excluir" styleClass="ui-priority-primary" />
+            <p:menuitem id="itemDA" action="#{dvdManagedBean.montarPaginaAtualizar()}" value="Atualizar" styleClass="ui-priority-primary" />
+            <p:menuitem id="itemDL" action="#{dvdManagedBean.montarPaginaListar()}" value="Listar" styleClass="ui-priority-primary" />     
+
+        </p:submenu>
+        <p:submenu label="Cliente">
+            
+            <p:menuitem id="itemCLI" action="#{clienteManagedBean.montarPaginaInserir()}" value="Cliente" styleClass="ui-priority-primary" style="margin-right:20px;" />
+                <p:menuitem id="itemCLE" action="#{clienteManagedBean.montarPaginaExcluir()}" value="Excluir" styleClass="ui-priority-primary" />
+            <p:menuitem id="itemCLA" action="#{clienteManagedBean.montarPaginaAtualizar()}" value="Atualizar" styleClass="ui-priority-primary" />
+            <p:menuitem id="itemCLL" action="#{clienteManagedBean.montarPaginaListar()}" value="Listar" styleClass="ui-priority-primary" />    
+  
+
+        </p:submenu>
+                <p:submenu label="Categoria">
+            
+            <p:menuitem id="itemCI" action="#{categoriaManagedBean.montarPaginaInserir()}" value="Inserir" styleClass="ui-priority-primary" style="margin-right:20px;" />
+                <p:menuitem id="itemCE" action="#{categoriaManagedBean.montarPaginaExcluir()}" value="Excluir" styleClass="ui-priority-primary" />
+            <p:menuitem id="itemCA" action="#{categoriaManagedBean.montarPaginaAtualizar()}" value="Atualizar" styleClass="ui-priority-primary" />
+            <p:menuitem id="itemCL" action="#{categoriaManagedBean.montarPaginaListar()}" value="Listar" styleClass="ui-priority-primary" />     
+
+        </p:submenu>
+        <p:submenu label="Alugar">
+            
+            <p:menuitem id="itemAI" action="#{alugaManagedBean.montarPaginaInserir()}" value="Inserir" styleClass="ui-priority-primary" style="margin-right:20px;" />
+                <p:menuitem id="itemAE" action="#{alugaManagedBean.montarPaginaExcluir()}" value="Excluir" styleClass="ui-priority-primary" />
+            <p:menuitem id="itemAA" action="#{alugaManagedBean.montarPaginaAtualizar()}" value="Atualizar" styleClass="ui-priority-primary" />
+            <p:menuitem id="itemAL" action="#{alugaManagedBean.montarPaginaListar()}" value="Listar" styleClass="ui-priority-primary" />     
+
+        </p:submenu>
+
+
+    </p:panelMenu>
+    </h:form >
+</ui:composition>
+       
